@@ -159,7 +159,7 @@ section {
   position: absolute;
   top: max(17%, 120px);
   width: 60%;
-  height: 30vw;
+  height: 22vw;
   background: white;
 }
 
@@ -175,10 +175,15 @@ small {
   border: none;
 
   width: 120px;
-  transform: translate(-45vw, 18vw);
+  transform: translate(-43vw, 18vw);
   font-size: 12px;
   font-weight: bold;
   background: rgb(160, 160, 160);
+  transition: background 1s;
+}
+
+#purchase:hover {
+  background: white;
 }
 
 #nextbtn,
@@ -187,7 +192,7 @@ small {
   width: 40px;
   padding: 10px;
   margin-top: 60%;
-  background: rgba(255, 255, 255, 0.555);
+  background: rgba(255, 255, 255, 0.5);
   transition: background 1s;
   border: none;
   outline: none;
@@ -250,15 +255,15 @@ section > div {
   animation: slide-in-left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 .enter-right-lines {
-  -webkit-animation: slide-in-right-lines 0.4s
+  -webkit-animation: slide-in-right-lines 1s
     cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  animation: slide-in-right-lines 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: slide-in-right-lines 1s cubic-bezier(0.645, 0.045, 0.355, 1) both;
 }
 
 .enter-left-lines {
-  -webkit-animation: slide-in-left-lines 0.4s
-    cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  animation: slide-in-left-lines 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  -webkit-animation: slide-in-left-lines 1s cubic-bezier(0.645, 0.045, 0.355, 1)
+    both;
+  animation: slide-in-left-lines 1s cubic-bezier(0.645, 0.045, 0.355, 1) both;
 }
 
 @-webkit-keyframes slide-in-right {
@@ -311,51 +316,43 @@ section > div {
 }
 @-webkit-keyframes slide-in-right-lines {
   0% {
-    -webkit-transform: translateX(100px);
-    transform: translateX(100px);
-    opacity: 0;
-  }
-  100% {
     -webkit-transform: translateX(0);
     transform: translateX(0);
-    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateX(-35vw);
+    transform: translateX(-35vw);
   }
 }
 @keyframes slide-in-right-lines {
   0% {
-    -webkit-transform: translateX(100px);
-    transform: translateX(100px);
-    opacity: 0;
-  }
-  100% {
     -webkit-transform: translateX(0);
     transform: translateX(0);
-    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateX(-35vw);
+    transform: translateX(-35vw);
   }
 }
 @-webkit-keyframes slide-in-left-lines {
   0% {
-    -webkit-transform: translateX(-100px);
-    transform: translateX(-100px);
-    opacity: 0;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
   }
 
   100% {
-    -webkit-transform: translateX(0);
-    transform: translateX(0);
-    opacity: 1;
+    -webkit-transform: translateX(35vw);
+    transform: translateX(35vw);
   }
 }
 @keyframes slide-in-left-lines {
   0% {
-    -webkit-transform: translateX(-100px);
-    transform: translateX(-100px);
-    opacity: 0;
-  }
-  100% {
     -webkit-transform: translateX(0);
     transform: translateX(0);
-    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateX(35vw);
+    transform: translateX(35vw);
   }
 }
 
@@ -412,16 +409,17 @@ section > div {
   }
 
   #hero {
-    top: 140px;
-    height: 200px;
+    top: 130px;
+    height: 240px;
     font-size: 30px;
     margin-left: 20px;
   }
 
   small {
     position: relative;
-    bottom: 20px;
+    bottom: 12px;
     left: 2px;
+
     font-size: 15px;
   }
 
@@ -429,17 +427,29 @@ section > div {
   #prevbtn {
     position: absolute;
     transform: translateY(-60vw);
+    background: rgba(134, 134, 134, 0.5);
   }
+
   #prevbtn {
     left: 0;
   }
   #nextbtn {
     right: 0;
   }
+
+  #nextbtn:hover,
+  #prevbtn:hover {
+    background: black;
+  }
+  #lines {
+    top: max(70%, 450px);
+    right: 20%;
+  }
+
   #purchase {
     transform: unset;
     position: absolute;
-    bottom: calc(400px - 40vw);
+    top: max(80%, 520px);
     margin: 0 1vw;
   }
 }
