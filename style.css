@@ -5,10 +5,56 @@
 }
 
 html,
-body {
+body,
+main,
+.loader-wrapper {
   height: 100%;
   background: rgb(68, 68, 68);
   overflow: hidden;
+}
+
+.loader-wrapper {
+  width: 100vw;
+  position: absolute;
+  z-index: 5;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box-container {
+  width: 100px;
+  height: 100px;
+}
+
+.box,
+.yellow {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.774);
+  display: inline-block;
+  animation: pulse 0.3s ease-in;
+}
+
+.yellow {
+  background: rgb(250, 233, 135);
+}
+
+.box:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.box:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.box:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+@keyframes pulse {
+  100% {
+    opacity: 0;
+  }
 }
 
 nav {
@@ -30,7 +76,7 @@ nav h1 {
   bottom: 6px;
   color: white;
   font-family: "Pacifico", cursive;
-  font-size: 35px;
+
   font-weight: lighter;
 }
 
@@ -74,34 +120,35 @@ nav div:last-of-type i {
 section {
   width: 60%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   float: right;
   height: 40vw;
   overflow: hidden;
 }
 
+#hero {
+  position: absolute;
+  height: 15vw;
+  transform: translate(-2px, -50px);
+  /* translate(-120px); */
+  z-index: 3;
+  font-size: 3vw;
+  font-family: "Roboto", sans-serif;
+  color: rgb(250, 233, 135);
+}
+
 #background {
   position: absolute;
   top: max(17%, 120px);
-  width: 100%;
+  width: 60%;
   height: 30vw;
   background: white;
 }
 
-#hero {
-  position: absolute;
-  transform: translate(-180px, 40vh);
-  z-index: 3;
-}
-
-#hero h1 {
-  color: yellow;
-  font-size: 40px;
-}
-
 small {
   color: white;
+  font-size: 1.5vw;
 }
 
 button {
@@ -263,6 +310,37 @@ section > div {
   }
   nav div:last-of-type i {
     left: 0;
+  }
+
+  section,
+  #background {
+    width: 100vw;
+    height: 50vw;
+    margin-top: 100px;
+  }
+
+  #hero {
+    top: 140px;
+    height: 200px;
+    font-size: 30px;
+    margin-left: 20px;
+  }
+
+  small {
+    position: relative;
+    bottom: 20px;
+    left: 2px;
+    font-size: 15px;
+  }
+  button {
+    position: absolute;
+    transform: translateY(-60vw);
+  }
+  button:first-of-type {
+    left: 0;
+  }
+  button:last-of-type {
+    right: 0;
   }
 }
 

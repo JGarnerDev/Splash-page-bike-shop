@@ -1,5 +1,7 @@
 const navbarMenu = document.querySelector("#navbar-menu");
 const hamburger = document.querySelector(".fa-bars");
+const loadPage = document.querySelector(".loader-wrapper");
+const loadBoxes = document.querySelectorAll(".box");
 
 var i = 0;
 var slideShow = document.getElementById("slideshow");
@@ -11,6 +13,17 @@ var images = [
   "https://i.imgur.com/oxLU13C.png",
   "https://i.imgur.com/k0G89LP.png",
 ];
+
+$(window).on("load", function () {
+  setTimeout(() => {
+    loadBoxes.forEach((box) => box.classList.remove("box"));
+    loadBoxes.forEach((box) => box.classList.add("yellow"));
+  }, 200);
+
+  setTimeout(() => {
+    $(loadPage).fadeOut("slow");
+  }, 1000);
+});
 
 let timeout;
 
