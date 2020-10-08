@@ -127,6 +127,23 @@ section {
   overflow: hidden;
 }
 
+#lines {
+  position: absolute;
+  display: flex;
+  justify-content: space-evenly;
+  height: 40px;
+  width: 60%;
+  right: 0;
+  top: calc(15% + 36vw + 80px);
+  overflow: hidden;
+}
+
+#lines div {
+  height: 100%;
+  width: 1px;
+  background: white;
+}
+
 #hero {
   position: absolute;
   height: 15vw;
@@ -151,7 +168,21 @@ small {
   font-size: 1.5vw;
 }
 
-button {
+#purchase {
+  position: absolute;
+  height: 30px;
+  outline: none;
+  border: none;
+
+  width: 120px;
+  transform: translate(-45vw, 18vw);
+  font-size: 12px;
+  font-weight: bold;
+  background: rgb(160, 160, 160);
+}
+
+#nextbtn,
+#prevbtn {
   height: 30px;
   width: 40px;
   padding: 10px;
@@ -163,7 +194,8 @@ button {
   z-index: 3;
 }
 
-button:hover {
+#nextbtn:hover,
+#prevbtn:hover {
   background: white;
 }
 
@@ -172,10 +204,10 @@ hr {
   border-top: 3px solid rgb(68, 68, 68);
 }
 
-button:first-of-type:before,
-button:first-of-type:after,
-button:last-of-type:before,
-button:last-of-type:after {
+#prevbtn:before,
+#prevbtn:after,
+#nextbtn:before,
+#nextbtn:after {
   content: "";
   position: absolute;
   width: 3px;
@@ -183,16 +215,16 @@ button:last-of-type:after {
   background: rgb(68, 68, 68);
 }
 
-button:first-of-type:before {
+#prevbtn:before {
   transform: translate(-8px, -5px) rotate(45deg);
 }
-button:first-of-type:after {
+#prevbtn:after {
   transform: translate(-8px, -3px) rotate(-45deg);
 }
-button:last-of-type:before {
+#nextbtn:before {
   transform: translate(7px, -5px) rotate(-45deg);
 }
-button:last-of-type:after {
+#nextbtn:after {
   transform: translate(7px, -3px) rotate(45deg);
 }
 
@@ -216,6 +248,17 @@ section > div {
   -webkit-animation: slide-in-left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)
     both;
   animation: slide-in-left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+.enter-right-lines {
+  -webkit-animation: slide-in-right-lines 0.4s
+    cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: slide-in-right-lines 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.enter-left-lines {
+  -webkit-animation: slide-in-left-lines 0.4s
+    cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: slide-in-left-lines 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
 @-webkit-keyframes slide-in-right {
@@ -258,6 +301,55 @@ section > div {
   0% {
     -webkit-transform: translateX(-1000px);
     transform: translateX(-1000px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@-webkit-keyframes slide-in-right-lines {
+  0% {
+    -webkit-transform: translateX(100px);
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes slide-in-right-lines {
+  0% {
+    -webkit-transform: translateX(100px);
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@-webkit-keyframes slide-in-left-lines {
+  0% {
+    -webkit-transform: translateX(-100px);
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes slide-in-left-lines {
+  0% {
+    -webkit-transform: translateX(-100px);
+    transform: translateX(-100px);
     opacity: 0;
   }
   100% {
@@ -332,15 +424,23 @@ section > div {
     left: 2px;
     font-size: 15px;
   }
-  button {
+
+  #nextbtn,
+  #prevbtn {
     position: absolute;
     transform: translateY(-60vw);
   }
-  button:first-of-type {
+  #prevbtn {
     left: 0;
   }
-  button:last-of-type {
+  #nextbtn {
     right: 0;
+  }
+  #purchase {
+    transform: unset;
+    position: absolute;
+    bottom: calc(400px - 40vw);
+    margin: 0 1vw;
   }
 }
 

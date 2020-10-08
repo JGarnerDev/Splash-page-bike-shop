@@ -7,6 +7,7 @@ var i = 0;
 var slideShow = document.getElementById("slideshow");
 var prevBtn = document.getElementById("prevbtn");
 var nextBtn = document.getElementById("nextbtn");
+var lines = document.getElementById("lines");
 
 var images = [
   "https://i.imgur.com/wdX8JBX.png",
@@ -37,11 +38,14 @@ function nextImage() {
   }
   slideShow.style.backgroundImage = `url(${images[i]})`;
   slideShow.classList.add("enter-right");
+  lines.classList.add("enter-right-lines");
+
   if (timeout) {
     window.clearTimeout(timeout);
   }
   timeout = setTimeout(() => {
-    window.slideShow.classList.remove("enter-right");
+    slideShow.classList.remove("enter-right");
+    lines.classList.remove("enter-right-lines");
   }, 400);
 }
 
@@ -57,10 +61,13 @@ function prevImage() {
   }
   timeout = window.setTimeout(() => {
     slideShow.classList.remove("enter-left");
+    lines.classList.remove("enter-left-lines");
   }, 400);
 
   slideShow.style.backgroundImage = `url(${images[i]})`;
   slideShow.classList.add("enter-left");
+
+  lines.classList.add("enter-left-lines");
 }
 
 function toggleMenu() {
