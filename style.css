@@ -9,15 +9,22 @@ body,
 main,
 .loader-wrapper {
   height: 100%;
-  background: rgb(68, 68, 68);
   overflow: hidden;
 }
+html,
+body,
+main,
+.loader-wrapper,
+nav {
+  background: rgb(68, 68, 68);
+}
+
+/* For the loading view */
 
 .loader-wrapper {
   width: 100vw;
   position: absolute;
   z-index: 5;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,17 +35,14 @@ main,
   height: 100px;
 }
 
+/* ...Small boxes inside, and their yellow form when loading is complete */
 .box,
 .yellow {
   width: 40px;
   height: 40px;
-  background: rgba(255, 255, 255, 0.774);
+  background: rgba(255, 255, 255, 0.5);
   display: inline-block;
   animation: pulse 0.3s ease-in;
-}
-
-.yellow {
-  background: rgb(250, 233, 135);
 }
 
 .box:nth-child(2) {
@@ -51,33 +55,35 @@ main,
   animation-delay: 0.3s;
 }
 
-@keyframes pulse {
-  100% {
-    opacity: 0;
-  }
+.yellow {
+  background: rgb(250, 233, 135);
 }
+
+/* The top-nav */
 
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   padding: 0 5%;
-  /* approx 1/5th */
   height: 120px;
   width: 100%;
-
-  /* rgb(68, 68, 68) */
-  z-index: 5;
 }
+
+nav a:hover,
+nav i:hover,
+nav h1 {
+  color: white;
+}
+
+/* The company logo */
 
 nav h1 {
   position: relative;
   bottom: 6px;
-  color: white;
   font-family: "Pacifico", cursive;
-
   font-weight: lighter;
+  font-size: max(4vw, 40px);
 }
 
 nav ul {
@@ -86,6 +92,15 @@ nav ul {
   align-items: center;
   list-style: none;
   width: 400px;
+  z-index: 4;
+}
+
+/* navigation links */
+
+nav a,
+nav i,
+#hero {
+  font-family: "Roboto", sans-serif;
 }
 
 nav a,
@@ -93,11 +108,6 @@ nav i {
   text-decoration: none;
   color: rgb(160, 160, 160);
   transition: color 1s;
-  font-family: "Roboto", sans-serif;
-}
-nav a:hover,
-nav i:hover {
-  color: white;
 }
 
 nav i:first-of-type {
@@ -115,7 +125,27 @@ nav :nth-child(3):not(li) {
 nav div:last-of-type i {
   position: relative;
   left: calc(-5% + 1px);
+  z-index: 5;
 }
+/* The large text left of slideshow */
+#hero {
+  position: absolute;
+  height: 15vw;
+  transform: translate(-2px, -50px);
+
+  z-index: 2;
+  font-size: 3vw;
+  color: rgb(250, 233, 135);
+}
+
+/* ...the small text under  */
+
+small {
+  color: white;
+  font-size: 1.5vw;
+}
+
+/* The slideshow */
 
 section {
   width: 60%;
@@ -127,64 +157,7 @@ section {
   overflow: hidden;
 }
 
-#lines {
-  position: absolute;
-  display: flex;
-  justify-content: space-evenly;
-  height: 40px;
-  width: 60%;
-  right: 0;
-  top: calc(15% + 36vw + 80px);
-  overflow: hidden;
-}
-
-#lines div {
-  height: 100%;
-  width: 1px;
-  background: white;
-}
-
-#hero {
-  position: absolute;
-  height: 15vw;
-  transform: translate(-2px, -50px);
-  /* translate(-120px); */
-  z-index: 3;
-  font-size: 3vw;
-  font-family: "Roboto", sans-serif;
-  color: rgb(250, 233, 135);
-}
-
-#background {
-  position: absolute;
-  top: max(17%, 120px);
-  width: 60%;
-  height: 22vw;
-  background: white;
-}
-
-small {
-  color: white;
-  font-size: 1.5vw;
-}
-
-#purchase {
-  position: absolute;
-  height: 30px;
-  outline: none;
-  border: none;
-
-  width: max(15vw, 120px);
-  transform: translate(-43vw, 18vw);
-  font-size: 12px;
-  font-weight: bold;
-  background: rgb(160, 160, 160);
-  transition: background 1s;
-}
-
-#purchase:hover {
-  background: white;
-}
+/* the next and previous slide buttons */
 
 #nextbtn,
 #prevbtn {
@@ -196,13 +169,15 @@ small {
   transition: background 1s;
   border: none;
   outline: none;
-  z-index: 3;
+  z-index: 1;
 }
 
 #nextbtn:hover,
-#prevbtn:hover {
+#prevbtn:hover,
+#purchase:hover {
   background: white;
 }
+/* the arrows in the buttons */
 
 hr {
   border: none;
@@ -233,6 +208,8 @@ hr {
   transform: translate(7px, -3px) rotate(45deg);
 }
 
+/* each slide (image is set in main.js) */
+
 section > div {
   height: 100%;
   width: 100%;
@@ -242,6 +219,173 @@ section > div {
   overflow: hidden;
   z-index: 0;
 }
+
+/* animated lines underneath slides */
+
+#lines {
+  position: absolute;
+  display: flex;
+  justify-content: space-evenly;
+  height: 40px;
+  width: 60%;
+  right: 0;
+  top: calc(15% + 36vw + 80px);
+  overflow: hidden;
+}
+
+/* each line */
+#lines div {
+  height: 100%;
+  width: 1px;
+  background: white;
+}
+
+/* the white background behind slides */
+
+#background {
+  position: absolute;
+  top: max(17%, 120px);
+  width: 60%;
+  height: 22vw;
+  background: white;
+}
+
+/* the purchase button */
+
+#purchase {
+  position: absolute;
+  height: 30px;
+  outline: none;
+  border: none;
+  width: max(15vw, 120px);
+  transform: translate(-43vw, 18vw);
+  font-size: 12px;
+  font-weight: bold;
+  background: rgb(160, 160, 160);
+  transition: background 1s;
+}
+
+@media (max-width: 768px) {
+  nav,
+  nav ul {
+    position: relative;
+  }
+
+  nav ul {
+    display: none;
+  }
+
+  nav h1 {
+    left: -4vw;
+  }
+
+  /* The collapsed navbar toggling class */
+  .show {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 80px;
+    flex-direction: column;
+    width: 180px;
+    height: 160px;
+    background: inherit;
+    text-align: end;
+    padding: 0px 20px 0px 10px;
+
+    -webkit-animation: slide-in-top 0.5s cubic-bezier(0.075, 0.82, 0.165, 1)
+      both;
+    animation: slide-in-top 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) both;
+    box-shadow: 4px 4px 4px -2px rgba(0, 0, 0, 0.541);
+  }
+  .show > * {
+    margin: 10px calc(5vw - 15px);
+    -webkit-animation: slide-in-right 0.5s cubic-bezier(0.19, 1, 0.22, 1) 0.5s
+      both;
+    animation: slide-in-right 0.5s cubic-bezier(0.19, 1, 0.22, 1) 0.5s both;
+  }
+
+  /* Showing the hamburger icon */
+
+  nav div:last-of-type {
+    display: block;
+    border: none;
+  }
+  nav div:last-of-type i {
+    left: 0;
+  }
+
+  section,
+  #background {
+    width: 100vw;
+    height: 50vw;
+    margin-top: 100px;
+  }
+
+  #hero {
+    top: 130px;
+    height: 240px;
+    font-size: 30px;
+    margin-left: 20px;
+    z-index: 3;
+  }
+
+  small {
+    position: relative;
+    bottom: 12px;
+    left: 2px;
+
+    font-size: 15px;
+  }
+
+  #nextbtn,
+  #prevbtn {
+    position: absolute;
+    transform: translateY(-60vw);
+    background: rgba(134, 134, 134, 0.5);
+    z-index: 7;
+  }
+
+  #prevbtn {
+    left: 0;
+  }
+  #nextbtn {
+    right: 0;
+  }
+
+  #nextbtn:hover,
+  #prevbtn:hover {
+    background: black;
+  }
+
+  #lines {
+    top: max(90vw, 520px);
+    justify-content: space-between;
+    width: 100vw;
+  }
+
+  #purchase {
+    transform: unset;
+    position: absolute;
+    top: max(100vw, 600px);
+    margin: 0 1vw;
+    height: 60px;
+    width: 200px;
+  }
+}
+
+@media (max-width: 440px) {
+  #lines {
+    top: 65vh;
+  }
+
+  #purchase {
+    top: 74vh;
+  }
+}
+
+/* Animations */
+
+/*    the animation classes (assigned in main.js) */
 
 .enter-right {
   -webkit-animation: slide-in-right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)
@@ -266,107 +410,14 @@ section > div {
   animation: slide-in-left-lines 1s cubic-bezier(0.645, 0.045, 0.355, 1) both;
 }
 
-@media (max-width: 768px) {
-  nav {
-    position: relative;
-    z-index: 3;
-  }
-  nav ul {
-    position: relative;
-    display: none;
-  }
-  .show {
-    display: block;
-    position: absolute;
-    right: 0;
-    top: 80px;
-    flex-direction: column;
-    width: 140px;
-    height: 160px;
-    background: inherit;
-    text-align: end;
-    padding: 0px 20px 0px 10px;
-
-    z-index: -1;
-    background: rgb(68, 68, 68);
-
-    -webkit-animation: slide-in-top 0.5s cubic-bezier(0.075, 0.82, 0.165, 1)
-      both;
-    animation: slide-in-top 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) both;
-    box-shadow: 4px 4px 4px -2px rgba(0, 0, 0, 0.541);
-  }
-  .show > * {
-    margin: 10px;
-
-    -webkit-animation: slide-in-right 0.5s cubic-bezier(0.19, 1, 0.22, 1) 0.5s
-      both;
-    animation: slide-in-right 0.5s cubic-bezier(0.19, 1, 0.22, 1) 0.5s both;
-  }
-
-  nav div:last-of-type {
-    display: block;
-    border: none;
-  }
-  nav div:last-of-type i {
-    left: 0;
-  }
-
-  section,
-  #background {
-    width: 100vw;
-    height: 50vw;
-    margin-top: 100px;
-  }
-
-  #hero {
-    top: 130px;
-    height: 240px;
-    font-size: 30px;
-    margin-left: 20px;
-  }
-
-  small {
-    position: relative;
-    bottom: 12px;
-    left: 2px;
-
-    font-size: 15px;
-  }
-
-  #nextbtn,
-  #prevbtn {
-    position: absolute;
-    transform: translateY(-60vw);
-    background: rgba(134, 134, 134, 0.5);
-  }
-
-  #prevbtn {
-    left: 0;
-  }
-  #nextbtn {
-    right: 0;
-  }
-
-  #nextbtn:hover,
-  #prevbtn:hover {
-    background: black;
-  }
-  #lines {
-    top: max(90vw, 520px);
-    justify-content: space-between;
-    width: 100vw;
-  }
-
-  #purchase {
-    transform: unset;
-    position: absolute;
-    top: max(100vw, 600px);
-    margin: 0 1vw;
-    height: 60px;
-    width: 200px;
+/*    For loading boxes */
+@keyframes pulse {
+  100% {
+    opacity: 0;
   }
 }
 
+/*    for the collapsed navbar */
 @-webkit-keyframes slide-in-top {
   0% {
     -webkit-transform: translateY(-1000px);
@@ -392,6 +443,7 @@ section > div {
   }
 }
 
+/* for next slides */
 @-webkit-keyframes slide-in-right {
   0% {
     -webkit-transform: translateX(1000px);
@@ -417,30 +469,7 @@ section > div {
   }
 }
 
-@-webkit-keyframes slide-in-right {
-  0% {
-    -webkit-transform: translateX(1000px);
-    transform: translateX(1000px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateX(0);
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-@keyframes slide-in-right {
-  0% {
-    -webkit-transform: translateX(1000px);
-    transform: translateX(1000px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateX(0);
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
+/* for previous slides */
 @-webkit-keyframes slide-in-left {
   0% {
     -webkit-transform: translateX(-1000px);
@@ -465,6 +494,8 @@ section > div {
     opacity: 1;
   }
 }
+
+/* for lines, when it's a next slide */
 @-webkit-keyframes slide-in-right-lines {
   0% {
     -webkit-transform: translateX(0);
@@ -485,6 +516,7 @@ section > div {
     transform: translateX(min(-350px, -35vw));
   }
 }
+/* for lines, when it's a previoues slide */
 @-webkit-keyframes slide-in-left-lines {
   0% {
     -webkit-transform: translateX(0);
