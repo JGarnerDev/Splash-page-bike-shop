@@ -375,11 +375,11 @@ section > div {
 
 @media (max-width: 440px) {
   #lines {
-    top: 65vh;
+    top: max(65vh, 420px);
   }
 
   #purchase {
-    top: 74vh;
+    top: max(65vh, 480px);
   }
 }
 
